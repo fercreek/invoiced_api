@@ -7,6 +7,6 @@ json.data do
       :authentication_token,
       :confirmation_token,
       :confirmed_at
-    ) 
+    )
   end
 end
