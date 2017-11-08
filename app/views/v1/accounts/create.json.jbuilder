@@ -1,6 +1,6 @@
 json.data do
   json.account do
-    json.partial!:(
+    json.partial!(
       'v1/accounts/account',
       account: account
     )
