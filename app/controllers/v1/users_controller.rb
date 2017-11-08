@@ -1,8 +1,7 @@
 module V1
-  class UserController < ApplicationController
+  class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
-
       if @user.save
         render :create
       else
@@ -13,8 +12,7 @@ module V1
     private
     
     def user_params
-      params.require(:user).require(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
-    
   end
 end
