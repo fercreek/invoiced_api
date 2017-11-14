@@ -18,7 +18,8 @@ module V1
     def update
       contact = current_organization.contacts.find(params[:id])
 
-      update_and_render_contact(contact, contact_params) || render_invalid_response
+      update_and_render_contact(contact, contact_params) 
+        || render_invalid_response
     end
 
     def destroy
@@ -31,10 +32,6 @@ module V1
     end
 
     private
-
-    def current_account
-      @current_account ||= Account.friendly.find(params[:account_id])
-    end
 
     def current_organization
       @current_organization ||=

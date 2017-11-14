@@ -6,6 +6,7 @@ module V1
   class AccountsControllerTest < ActionDispatch::IntegrationTest
     setup do
       user = users(:one)
+      @account = accounts(:artellectual)
 
       @header = {
         'X-User-Email': user.email,
@@ -13,17 +14,17 @@ module V1
       }
     end
 
-    # test 'access user accounts' do
-    #   not_user_one_account = accounts(:another_one)
+    test 'access user accounts' do
+      not_user_one_account = accounts(:another_one)
 
-    #   get v1_accounts_path, headers: @header
+      get v1_accounts_path, headers: @header
 
-    #   accounts = JSON.parse(@response.body)['data']
-    #   account_ids = accounts.map { |account| account['id'] }
+      accounts = JSON.parse(@response.body)['data']
+      account_ids = accounts.map { |account| account['id'] }
 
-    #   assert_response :success
-    #   assert_not_includes account_ids, not_user_one_account.id
-    # end
+      assert_response :success
+      assert_not_includes account_ids, not_user_one_account.id
+    end
 
     test 'creates account for user' do 
       account_params = {
@@ -35,8 +36,8 @@ module V1
       }
 
       post(
-        v1_accounts_path, 
-        headers: @header, 
+        v1_accounts_path(@account),
+        headers: @header,
         params: { account: account_params }
       )
 
