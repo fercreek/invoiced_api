@@ -1,0 +1,9 @@
+artellectual:
+  name: 'Artellectual'
+  slug: 'artellectual'
+  onwer: one
+
+another_one:
+  name: <%= Faker::Company.name %>
+  slug: 'another-one'
+  onwer: two
